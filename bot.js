@@ -14,7 +14,12 @@ let loadedDetails = false
 let messageBox = null
 
 let app = async () => {
-    let browser = await puppeteer.launch({ headless: false })
+    const browser = await puppeteer.launch({
+        'args': [
+            '--no-sandbox',
+            '--disable-setuid-sandbox'
+        ]
+    });
     whatsapp = await browser.newPage()
     await whatsapp.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3641.0 Safari/537.36');
     await whatsapp.goto('https://web.whatsapp.com/', { waitUntil: 'networkidle2' })
@@ -37,7 +42,7 @@ module.exports = {
             chatLink = 'wa.me/' + chatLink + '\n'
             if (loadedDetails) {
                 await messageBox.type(chatLink)
-                chatLink = chatLink.replace('\n','')
+                chatLink = chatLink.replace('\n', '')
                 chatLink = await whatsapp.waitForSelector('a[href="http://' + chatLink + '"]')
                 await chatLink.click()
                 await sleep(2500)
