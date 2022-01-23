@@ -22,7 +22,7 @@ let app = async () => {
     await whatsapp.screenshot({ path: 'qrcode.png' })
     let qrImage = new InputFile('qrcode.png')
     sendPhoto(qrImage);
-    await whatsapp.waitForSelector('div[role="textbox"][class="_13NKt copyable-text selectable-text"][contenteditable="true"]', { timeout: 1000 * 60 })
+    await whatsapp.waitForSelector('div[role="textbox"][class="_13NKt copyable-text selectable-text"][contenteditable="true"]', { timeout: 1000 * 60*10 })
     await refreshDefaultChat()
     messageBox = await whatsapp.waitForSelector('div[title="Type a message"][role="textbox"]')
     console.log('logged in successfully!');
