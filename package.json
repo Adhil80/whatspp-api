@@ -1,11 +1,17 @@
 {
   "name": "whatsapp-api",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "author": "adhilmhdk80@gmail.com",
+  "license": "MIT",
   "scripts": {
-    "start": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
-  "author": "",
-  "license": "ISC"
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "dotenv": "^14.2.0",
+    "express": "^4.17.2",
+    "grammy": "^1.6.2",
+    "puppeteer": "^13.1.1"
+  }
 }
