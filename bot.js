@@ -14,10 +14,7 @@ let loadedDetails = false
 let messageBox = null
 
 let app = async () => {
-    const browser = await puppeteer.launch({
-        executablePath: '/usr/bin/chromium-browser',
-        args: ['--single-process', '--no-zygote', '--no-sandbox']
-    })
+    const browser = await puppeteer.launch({headless:false})
     whatsapp = await browser.newPage()
     await whatsapp.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3641.0 Safari/537.36');
     await whatsapp.goto('https://web.whatsapp.com/', { waitUntil: 'networkidle2' })
