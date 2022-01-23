@@ -37,12 +37,16 @@ module.exports = {
             chatLink = 'wa.me/' + chatLink + '\n'
             if (loadedDetails) {
                 await messageBox.type(chatLink)
+                await sleep(500)
                 chatLink = chatLink.replace('\n', '')
                 chatLink = await whatsapp.waitForSelector('a[href="http://' + chatLink + '"]')
+                await sleep(500)
                 await chatLink.click()
                 await sleep(4000)
                 await messageBox.type(message + '\n')
+                await sleep(500)
                 await refreshDefaultChat()
+                await sleep(500)
                 resolve()
             }
         })
@@ -51,8 +55,13 @@ module.exports = {
 
 let refreshDefaultChat = async () => {
     let textBox = await whatsapp.$('div[role="textbox"][class="_13NKt copyable-text selectable-text"][contenteditable="true"]')
+    await sleep(500)
     await textBox.click()
+    await sleep(500)
     await textBox.type('List')
+    await sleep(500)
     defalutChat = await whatsapp.waitForSelector('span[class="matched-text i0jNr"]')
+    await sleep(500)
     await defalutChat.click()
+    await sleep(500)
 }
