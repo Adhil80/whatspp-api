@@ -40,7 +40,7 @@ module.exports = {
                 chatLink = chatLink.replace('\n', '')
                 chatLink = await whatsapp.waitForSelector('a[href="http://' + chatLink + '"]')
                 await chatLink.click()
-                await sleep(2500)
+                await sleep(4000)
                 await messageBox.type(message + '\n')
                 await refreshDefaultChat()
                 resolve()
